@@ -12,7 +12,8 @@
 // B6 - soft reset
 // D0 - chip-id : This value is fixed in BMP180 to 0x55 and can be used to check whether communication is functioning
 
-module rom
+
+module rom_instr
     #(parameter ADDR_ROM_SZ = 4,              // addr width in ROM 
       parameter DATA_ROM_SZ = 8)              // word width in ROM
     (CLK, I_ADDR_ROM, O_ADDR_ROM, O_DATA_ROM);
@@ -27,14 +28,13 @@ module rom
 //  internal signals
     reg [DATA_ROM_SZ-1:0] rom_array [0:2**ADDR_ROM_SZ-1]; // ROM array
     reg [ADDR_ROM_SZ-1:0] addr_reg; 
-    
-    
+        
 //-------------------------------------------------------------------------- 
     assign O_ADDR_ROM = addr_reg;
     
 //  read ROM content from file
     initial begin
-      $readmemh("../comm_bmp180.txt", rom_array); 
+      $readmemh("rom_instr.rom", rom_array); 
     end
 
 //  read operation  

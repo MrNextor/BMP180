@@ -11,7 +11,6 @@ module mult
 //  output signals
     output reg signed [DATA_ALU-1:0] O_RSL;  // result alu
 
-
     always @(*) begin
       if (I_SG)
         O_RSL = $signed(I_A) * $signed(I_B); // signed

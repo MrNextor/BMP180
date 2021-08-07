@@ -14,7 +14,6 @@ module clk_div_msrmnt
     input wire I_RST; // reset counter
 //  output signals
     output reg [CNT_MSR_MX_SZ-1:0] O_CNT; // counter clock    
-
  
 //  counter clk 
     always @(posedge CLK or negedge RST_n) begin

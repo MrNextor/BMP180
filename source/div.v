@@ -29,7 +29,6 @@ module div
     wire signed [DATA_DIV-1:0] sub; 
     reg [DATA_DIV-1:0]         rsl_reg; // result register
 
-
 //--------------------------------------------------------------------------     
     assign num_uns = I_NUM[DATA_DIV-1] ? (~I_NUM + 1'b1) : I_NUM; // conversion numerator in unsigned
     assign den_uns = I_DEN[DATA_DIV-1] ? (~I_DEN + 1'b1) : I_DEN; // conversion denomerator in unsigned

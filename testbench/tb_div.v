@@ -1,5 +1,5 @@
 `timescale 10 ns/ 1 ns
-module div_vlg_tst();
+module tb_div;
     parameter DATA_DIV = 4;
     parameter CNT_SZ = $clog2(DATA_DIV); // counter width
     

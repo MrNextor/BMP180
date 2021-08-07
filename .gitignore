@@ -30,9 +30,8 @@
 *.tcl
 *msim_transcript
 *.wlf
-!BMP180_DEBUG.tcl
+!db_bmp180.tcl
 *.txt
-!comm_bmp180.txt
 *~
 *example*
 *sopc_*
@@ -43,3 +42,4 @@
 /incremental_db/
 /output_files/
 rtl_work/
+/simulation/

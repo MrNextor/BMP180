@@ -17,7 +17,6 @@ module opm
     reg [DATA_OPM_SZ-1:0] op_ram[0:2**ADDR_OPM_SZ-1]; // one port memory
     reg [ADDR_OPM_SZ-1:0] addr_reg;
 
-
 //  write operation 
     always @(posedge CLK) begin
       if (I_WE)

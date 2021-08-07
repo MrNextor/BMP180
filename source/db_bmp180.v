@@ -1,4 +1,4 @@
-module BMP180_DEBUG
+module db_bmp180
     #(parameter FPGA_CLK = 50_000_000,   // FPGA frequency 50 MHz
       parameter I2C_CLK  = 100_000)      // I2C bus frequency 100 KHz  
     (CLK, I_KEY, I_SW, 
@@ -23,10 +23,13 @@ module BMP180_DEBUG
     wire               ack;
     wire               err;
     
-
 //--------------------------------------------------------------------------
-    BMP180 #(.FPGA_CLK(FPGA_CLK), .I2C_CLK(I2C_CLK))
-    BMP180 
+    top_bmp180 
+        #(
+         .FPGA_CLK(FPGA_CLK),
+         .I2C_CLK(I2C_CLK)
+        )
+    top_bmp180 
         (
          .CLK(CLK), 
          .RST_n(RST_n), 

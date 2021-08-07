@@ -10,7 +10,7 @@
     
     
 `timescale 10 ns/ 1 ns
-module BMP180_vlg_tst();
+module tb_bmp180;
     parameter FPGA_CLK             = 50_000_000;           // FPGA frequency 50 MHz
     parameter I2C_CLK              = 100_000;              // I2C bus frequency 100 KHz     
     parameter ADDR_I2C_SZ          = 7;                    // addr on I2C bus width
@@ -68,7 +68,7 @@ module BMP180_vlg_tst();
     integer                    k;
     
     
-    BMP180 dut
+    top_bmp180 dut
         (
          .CLK(CLK), 
          .RST_n(RST_n), 

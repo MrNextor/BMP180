@@ -9,7 +9,7 @@
     `define ALU_SRA   3'b111
 
 
-module calc_fsm
+module calc
     #(parameter ADDR_OPM_SZ = 4,  // addr width in RAM 
       parameter DATA_OPM_SZ = 16, // word width in RAM
       parameter DATA_ALU    = 32, // data ALU width
@@ -122,7 +122,6 @@ module calc_fsm
     reg signed [DATA_ALU-1:0] nx_p_buff;        // buffer next pressure
     reg signed [15:0]         nx_o_t_value;     // next current temperature
     reg signed [18:0]         nx_o_p_value;     // next current pressure   
-
 
 //  determining of rissing edge I_FN_DIV
     assign rs_i_fn_div = cr_i_fn_div & !pr_i_fn_div;

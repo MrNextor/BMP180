@@ -25,7 +25,6 @@ module alu
 //  output signals
     output reg signed [DATA_ALU-1:0] O_RSL; // result alu
 
-
 //  operation alu
     always @ (*) begin
       case (I_OP)

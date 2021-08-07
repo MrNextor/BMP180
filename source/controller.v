@@ -9,7 +9,7 @@
     `define MSR_TMP   4'b1000 // measurement temperature
 
 
-module controller_fsm
+module controller
     #(parameter FPGA_CLK    = 50_000_000, // FPGA frequency 50 MHz
       parameter ADDR_I2C_SZ = 7,          // addr on I2C bus width
       parameter DATA_I2C_SZ = 8,          // data on I2C bus width
@@ -127,7 +127,6 @@ module controller_fsm
     reg [1:0]                  nx_o_oss;         // next number OSS (0 or 1 or 2 or3)
     reg                        nx_o_ut_calc;     // next enable calc T
     reg                        nx_o_up_calc;     // enable calc P  
-    
     
 //  determining of rissing edge and falling edge I_BUSY
     assign rs_i_busy =  cr_i_busy & !pr_i_busy;

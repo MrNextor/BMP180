@@ -1,4 +1,4 @@
-module BMP180
+module top_bmp180
     #(parameter FPGA_CLK = 50_000_000, // FPGA frequency 50 MHz
       parameter I2C_CLK  = 100_000)    // I2C bus frequency 100 KHz     
     (CLK, RST_n, I_COMM, 
@@ -88,11 +88,10 @@ module BMP180
     wire [ADDR_OPM_SZ-1:0]     addr_opm_ctrl; // word addr in RAM (input) (from controller)
     wire [ADDR_OPM_SZ-1:0]     addr_opm_calc; // word addr in RAM (input) (from calc)
     wire [DATA_OPM_SZ-1:0]     data_opm_ctrl; // word to write to RAM (input) (from controller)   
-    wire [DATA_OPM_SZ-1:0]     data_opm_calc; // word to write to RAM (input) (from calc)      
-    
+    wire [DATA_OPM_SZ-1:0]     data_opm_calc; // word to write to RAM (input) (from calc)        
 
 //--------------------------------------------------------------------------    
-    controller_fsm 
+    controller
         #(
          .FPGA_CLK(FPGA_CLK),
          .ADDR_I2C_SZ(ADDR_I2C_SZ),
@@ -103,7 +102,7 @@ module BMP180
          .RXD_SZ(RXD_SZ),
          .DATA_OPM_SZ(DATA_OPM_SZ)
         )
-    controller_fsm
+    controller
         (
          .CLK(CLK), 
          .RST_n(RST_n), 
@@ -133,7 +132,7 @@ module BMP180
         );
 
 //-------------------------------------------------------------------------- 
-    calc_fsm
+    calc
         #(
          .ADDR_OPM_SZ(ADDR_OPM_SZ), 
          .DATA_OPM_SZ(DATA_OPM_SZ),
@@ -143,7 +142,7 @@ module BMP180
          .RXD_SZ(RXD_SZ),
          .DATA_DIV(DATA_DIV)
         )
-    calc_fsm
+    calc
         (
          .CLK(CLK),
          .RST_n(RST_n), 
@@ -173,12 +172,12 @@ module BMP180
         );        
 
 //--------------------------------------------------------------------------     
-    rom 
+    rom_instr 
         #(
          .ADDR_ROM_SZ(ADDR_ROM_SZ), 
          .DATA_ROM_SZ(DATA_ROM_SZ)
         )
-    rom
+    rom_instr
         (
          .CLK(CLK), 
          .I_ADDR_ROM(command), 
